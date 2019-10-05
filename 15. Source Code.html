@@ -1,47 +1,19 @@
-<pre class="prettyprint linenums">&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;JSON&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Learn JSON&lt;/h1&gt;
-    &lt;div id="output"&gt;&lt;/div&gt;
-    &lt;script type="text/javascript"&gt;
-        var myObj = {
-            "friends": [{
-                "firstName": "Mike"
-                , "lastName": "Jones"
-           },{
-                "firstName": "John"
-                , "lastName": "Smith"
-           } ,{
-                "firstName": "Laurence"
-                , "lastName": "Svekis"
-           },{
-                "firstName": "Alice"
-                , "lastName": "James"
-           }]
-        }
-        
-        var html = '';
-        
-        myObj.friends.splice(3,0,{
-                "firstName": "New"
-                , "lastName": "Person"
-           })
-        
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSON</title>
+</head>
+<body>
+    <h1>Learn JSON</h1>
+    <div id="output"></div>
+    <script type="text/javascript">
+        var data = '{"results":[{"gender":"male","name":{"title":"Mr","first":"Joshua","last":"Hughes"},"location":{"street":{"number":8657,"name":"Railway Road"},"city":"Christchurch","state":"Auckland","country":"New Zealand","postcode":57695,"coordinates":{"latitude":"59.0742","longitude":"-62.6826"},"timezone":{"offset":"+4:30","description":"Kabul"}},"email":"Joshua.Hughes@example.com","login":{"uuid":"94adb108-0fe7-43ee-a717-9de32d83e9bf","username":"beautifulladybug614","password":"joebob","salt":"b04Dm43y","md5":"7dddd7a7308de992c79ae2c84d0c3be7","sha1":"1b1b6aa38d5b20775d1dfc1405bbf42bf8035f38","sha256":"cc8b1944412e7f7d0048590b699af79deee913565514e1d768fbc551b47cb5ac"},"dob":{"date":"1991-02-02T07:43:06.856Z","age":28},"registered":{"date":"2017-12-16T05:11:48.724Z","age":2},"phone":"(185)-295-7982","cell":"(359)-472-4580","id":{"name":"","value":null},"picture":{"large":"https://randomuser.me/api/portraits/men/22.jpg","medium":"https://randomuser.me/api/portraits/med/men/22.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/22.jpg"},"nat":"NZ"}],"info":{"seed":"f5af3c137b9c75e4","results":1,"page":1,"version":"1.3"}}';
+        var dataJSON = JSON.parse(data);
+        var person = dataJSON.results[0];
         var output = document.getElementById('output');
-        for(x=0;x&lt;myObj.friends.length;x++){
-            html += (Number(x)+1) + ' . ' + myObj.friends[x].firstName + ' ' + myObj.friends[x].lastName + '&lt;br&gt;'
-            
-        }
-        output.innerHTML = html;
-        myObj.friends.forEach(function(item){
-            output.innerHTML += item.firstName + ' ' + item.lastName + '&lt;br&gt;'
-        })
-        
-        
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
+        output.innerHTML = `<img src="${person.picture.thumbnail}"> ${person.name.first} ${person.name.last} `;
+        console.log(person.name)
+    </script>
+</body>
+</html>
