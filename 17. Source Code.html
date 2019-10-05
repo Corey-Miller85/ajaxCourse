@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSON</title>
+</head>
+<body>
+    <h1>Learn JSON</h1>
+    <div id="output"></div>
+    <form id="myForm">
+        <input type="text" name="first" value="Corey"><br>
+        <input type="text" name="last" value="Miller"><br>
+        <input type="text" name="company" value="Discoveryvip"><br>
+        <input type="text" name="email" value="Svenkis@gmail.com"><br>
+        <input type="submit" value="Submit">
+
+    </form>
+
+    <script type="text/javascript">
+    var myForm = document.getElementById("myForm");
+    myForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        var data = formData(myForm);
+        console.log(data)
+    })
+
+    function formData(form){
+        var el = form.querySelectorAll('input[type="text"]');
+        var myData = {};
+        for (var x = 0; x < el.length; x++) {
+            var name = el[x].name;
+            var value = el[x].value;
+            myData[name] = value;
+        }
+        return myData; 
+    }
+
+    </script>
+</body>
+</html>
