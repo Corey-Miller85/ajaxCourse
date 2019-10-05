@@ -1,0 +1,47 @@
+<pre class="prettyprint linenums">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;JSON&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Learn JSON&lt;/h1&gt;
+    &lt;div id="output"&gt;&lt;/div&gt;
+    &lt;script type="text/javascript"&gt;
+        var myObj = {
+            "friends": [{
+                "firstName": "Mike"
+                , "lastName": "Jones"
+           },{
+                "firstName": "John"
+                , "lastName": "Smith"
+           } ,{
+                "firstName": "Laurence"
+                , "lastName": "Svekis"
+           },{
+                "firstName": "Alice"
+                , "lastName": "James"
+           }]
+        }
+        
+        var html = '';
+        
+        myObj.friends.splice(3,0,{
+                "firstName": "New"
+                , "lastName": "Person"
+           })
+        
+        var output = document.getElementById('output');
+        for(x=0;x&lt;myObj.friends.length;x++){
+            html += (Number(x)+1) + ' . ' + myObj.friends[x].firstName + ' ' + myObj.friends[x].lastName + '&lt;br&gt;'
+            
+        }
+        output.innerHTML = html;
+        myObj.friends.forEach(function(item){
+            output.innerHTML += item.firstName + ' ' + item.lastName + '&lt;br&gt;'
+        })
+        
+        
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
