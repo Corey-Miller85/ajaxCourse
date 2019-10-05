@@ -1,26 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title>JSON</title>
 </head>
-
 <body>
     <h1>Learn JSON</h1>
+    <div id="output"></div>
     <script type="text/javascript">
-        var person = {
-            "name" : "Joe",
-            "lastName" : "Miller",
-            "car1": "Mustang",
-            "car2" : "F150"
+        var myObj = {
+            "friends": [{
+                "firstName":"Mike",
+                "lastName":"Jones"
+            },{
+                "firstName":"John",
+                "lastName":"Smith"
+            },{
+                "firstName":"Laurence",
+                "lastName":"Svekis"
+            },{
+                "firstName":"Ricky",
+                "lastName":"Bobby"
+            }]
         }
-        var str1 = "car";
-        var cnt = 1; 
-        console.log(person[str1 + cnt]);
-        cnt++;
-        console.log(person[str1 + cnt]);
+        
+
+        var output = document.getElementById("output")
+        myObj.friends.forEach((element, index) => {
+            output.innerHTML += `${index + 1}. ${element.firstName} ${element.lastName} <br>`;
+        });
+
+        // for (var index in users) {
+        //     html += (Number(index) + 1) + ". " + users[index].firstName + " " + users[index].lastName + '<br>';
+        // }
+        // document.getElementById('output').innerHTML = html;
+        
     </script>
 </body>
-
-</html> 
+</html>
