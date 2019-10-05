@@ -23,7 +23,11 @@
                 "lastName":"Bobby"
             }]
         }
-        
+
+        myObj.friends.splice(0,0, {
+            "firstName":"New",
+            "lastName":"person"
+        });
 
         var output = document.getElementById("output")
         myObj.friends.forEach((element, index) => {
