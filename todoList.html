@@ -9,7 +9,7 @@
     <div id="output">
         <ul id="taskList"></ul>
     </div>
-    <form name="myForm">
+    <form id="myForm">
         Task:
         <input type="text" name="task" placeholder="task">
         <input type="submit" value="add new task">
@@ -18,6 +18,13 @@
         var dataJSON = '';
         var output = document.querySelector('#output');
         var taskList = document.querySelector('#taskList');
+
+        document.getElementById("myForm").addEventListener('submit', (e) => {
+            e.preventDefault();
+            var tempValue = document.querySelector('#myForm input[name="task"]').value;
+            console.log(tempValue)
+            addNewItem({"info":tempValue, "status":false});
+        });
 
         window.onload = () => {
             if (sessionStorage["task"] != null) {
@@ -29,6 +36,12 @@
             }
             buildCheckboxes(dataJSON);
         };
+
+        function addNewItem(data) {
+            dataJSON.push(data);
+            taskList.innerHTML += `<li> ${data.info} <input type="checkbox" value="${dataJSON.length}" ${status}> </li>`;
+
+        }
 
         function buildCheckboxes(data){
             for (var key in data) {
