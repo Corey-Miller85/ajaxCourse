@@ -17,10 +17,27 @@
     </form>
 
     <script type="text/javascript">
+
     var myForm = document.getElementById("myForm");
+
+
+        window.onload = function(){
+            if (sessionStorage['person'] != null){
+                var data = JSON.parse(sessionStorage['person']);
+                var message = "Welcome " + data.first + " " + data.last + " to the site.";
+                document.getElementById('output').innerHTML = message;     
+                console.log(data)
+            }
+        }
+
+
+
     myForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        var data = formData(myForm);
+        var data = JSON.stringify(formData(myForm));
+        if (data){
+            sessionStorage['person'] = data;
+        }
         console.log(data)
     })
 
